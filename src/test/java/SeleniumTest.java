@@ -183,6 +183,17 @@ public class SeleniumTest {
         WebElement span = context.findElement(By.cssSelector("span"));
 
         System.out.println(span.getText());
+    }
+
+    @Test
+    public void staleElementReferenceExceptionTest() {
+        driver.get("https://litecart.stqa.ru/en/rubber-ducks-c-1/");
+
+        WebElement greenDuck = driver.findElement(By.cssSelector("[alt='Green Duck']"));
+
+        driver.navigate().refresh();
+
+        greenDuck.click();
 
     }
 }
