@@ -17,20 +17,19 @@ public class ObjectPOTest extends TestBase {
     private String regularUserPassword = "Test1234!";
     private String regularUserName = "Vadim Zubovich";
 
-    @Override
-    @BeforeMethod
-    protected void methodSetup() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--ignore-certificate-errors");
-
-        driver = new ChromeDriver(options);
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
-        driver.manage().timeouts().scriptTimeout(Duration.ofMinutes(5));
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-        driver.manage().window().maximize();
-        driver.get("https://litecart.stqa.ru/en/");
-    }
-
+//    @Override
+//    @BeforeMethod
+//    protected void methodSetup() {
+//        ChromeOptions options = new ChromeOptions();
+//        options.addArguments("--ignore-certificate-errors");
+//
+//        driver = new ChromeDriver(options);
+//        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
+//        driver.manage().timeouts().scriptTimeout(Duration.ofMinutes(5));
+//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+//        driver.manage().window().maximize();
+//        driver.get("https://litecart.stqa.ru/en/");
+//    }
 
     @Test
     public void loginTest() {

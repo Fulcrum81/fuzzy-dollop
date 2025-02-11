@@ -1,7 +1,10 @@
 package pages.staticpo;
 
+import com.codeborne.selenide.Condition;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 
 public class LoginPage {
 
@@ -9,9 +12,11 @@ public class LoginPage {
     private static By passwordInput = By.name("password");
     private static By loginButton = By.name("login");
 
-    public static void login(WebDriver driver, String email, String password) {
-        driver.findElement(emailInput).sendKeys(email);
-        driver.findElement(passwordInput).sendKeys(password);
-        driver.findElement(loginButton).click();
+    public static void login(String email, String password) {
+        $(emailInput).sendKeys(email);
+        $(passwordInput).sendKeys(password);
+        $(loginButton).click();
+        $(loginButton).shouldHave(Condition.cssValue("background", "#kjvhsdkvjhs"));
+
     }
 }

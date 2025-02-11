@@ -2,13 +2,14 @@ package pages.object;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+import pages.object.helpers.Locators;
+
+import static pages.object.helpers.Locators.getLocator;
 
 public class LoginPage extends PageBase {
 
     public HeaderMenu headerMenu;
-    private By emailInput = By.name("email");
-    private By passwordInput = By.name("password");
-    private By loginButton = By.name("login");
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
@@ -17,8 +18,12 @@ public class LoginPage extends PageBase {
     }
 
     public void login(String email, String password) {
-        driver.findElement(emailInput).sendKeys(email);
-        driver.findElement(passwordInput).sendKeys(password);
-        driver.findElement(loginButton).click();
+        driver.findElement(getLocator("LoginPage.emailInput")).sendKeys(email);
+        driver.findElement(getLocator("LoginPage.passwordInput")).sendKeys(password);
+        driver.findElement(getLocator("LoginPage.loginButton")).click();
+
+        String color = driver.findElement(getLocator("LoginPage.loginButton")).getCssValue("background");
+
+        Assert.assertEquals(color, "#");
     }
 }
