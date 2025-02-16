@@ -9,10 +9,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import pages.object.enums.Browser;
 
 import java.time.Duration;
 
-import static com.codeborne.selenide.Browsers.CHROME;
+import static com.codeborne.selenide.Browsers.*;
 import static com.codeborne.selenide.Selenide.open;
 
 public class TestBase {
@@ -22,7 +24,16 @@ public class TestBase {
         ChromeOptions options = new ChromeOptions();
 //        options.addArguments("--ignore-certificate-errors");
 
-        Configuration.browser = CHROME;
+        Browser browser = Browser.valueOf(System.getProperty("browser", "chrome"));
+
+        Configuration.browser = switch (browser) {
+            case chrome -> CHROME;
+            case firefox -> FIREFOX;
+            case safari -> SAFARI;
+            case edge -> EDGE;
+        };
+
+
         Configuration.pageLoadTimeout = 5000;
         Configuration.timeout = 5000;
         Configuration.browserSize = "1920x1080";

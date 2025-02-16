@@ -14,4 +14,6 @@ public class StaticPOTest extends TestBase {
         LoginMessagePage.validateMessage(String.format(loginSuccessMessage, regularUserName));
     }
 
+
+
 }

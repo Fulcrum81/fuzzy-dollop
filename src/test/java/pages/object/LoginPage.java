@@ -1,5 +1,6 @@
 package pages.object;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -11,19 +12,15 @@ public class LoginPage extends PageBase {
 
     public HeaderMenu headerMenu;
 
-    public LoginPage(WebDriver driver) {
-        this.driver = driver;
+    public LoginPage() {
 //        super(driver);
-        headerMenu = new HeaderMenu(driver);
+        headerMenu = new HeaderMenu();
     }
 
+    @Step("Login with credentials")
     public void login(String email, String password) {
-        driver.findElement(getLocator("LoginPage.emailInput")).sendKeys(email);
-        driver.findElement(getLocator("LoginPage.passwordInput")).sendKeys(password);
-        driver.findElement(getLocator("LoginPage.loginButton")).click();
-
-        String color = driver.findElement(getLocator("LoginPage.loginButton")).getCssValue("background");
-
-        Assert.assertEquals(color, "#");
+        WebDriverContainer.getDriver().findElement(getLocator("LoginPage.emailInput")).sendKeys(email);
+        WebDriverContainer.getDriver().findElement(getLocator("LoginPage.passwordInput")).sendKeys(password);
+        WebDriverContainer.getDriver().findElement(getLocator("LoginPage.loginButton")).click();
     }
 }

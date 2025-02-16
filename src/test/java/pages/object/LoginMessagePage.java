@@ -1,20 +1,20 @@
 package pages.object;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 public class LoginMessagePage extends PageBase {
 
     public HeaderMenu headerMenu;
     private By message = By.cssSelector("#notices>.notice");
 
-    public LoginMessagePage(WebDriver driver) {
-        this.driver = driver;
-//        super(driver);
-        headerMenu = new HeaderMenu(driver);
+    public LoginMessagePage() {
+        headerMenu = new HeaderMenu();
     }
 
-    public String getMessage() {
-        return driver.findElement(message).getText();
+    @Step("Validate login result message")
+    public void validateMessage(String actualMessage) {
+        Assert.assertEquals(WebDriverContainer.getDriver().findElement(message).getText(), actualMessage);;
     }
 }
