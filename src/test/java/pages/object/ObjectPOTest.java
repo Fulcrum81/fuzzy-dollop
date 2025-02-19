@@ -1,18 +1,16 @@
 package pages.object;
 
-import com.epam.reportportal.testng.ReportPortalTestNGListener;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 @Epic("Authentication implementation")
 @Feature("User login with credentials")
 public class ObjectPOTest extends TestBase {
 
-    private final String loginSuccessMessage = "You are now logged in as %s!.";
+    private final String loginSuccessMessage = "You are now logged in as %s.";
     private final String loginErrorMessage = "Wrong password or the account is disabled, or does not exist";
     private final String regularUserEmail = "vadim.zubovich@gmail.com";
     private final String regularUserPassword = "Test1234!";
