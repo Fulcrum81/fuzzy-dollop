@@ -27,7 +27,7 @@ import java.util.Calendar;
 
 import static org.openqa.selenium.OutputType.FILE;
 
-@Listeners({ScreenshotListener.class, ReportPortalTestNGListener.class})
+@Listeners(ReportPortalTestNGListener.class)
 public class TestBase {
 
     @BeforeMethod
